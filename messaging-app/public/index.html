@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Messaging App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+  <div id="login-screen" class="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
+    <h1 class="text-2xl font-bold mb-4 text-center">Welcome to Messaging App</h1>
+    <input
+      id="username-input"
+      type="text"
+      placeholder="Enter your username"
+      class="w-full border border-gray-300 rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <button
+      id="login-btn"
+      class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+    >
+      Join Chat
+    </button>
+  </div>
+
+  <div id="chat-screen" class="hidden flex flex-col w-full max-w-4xl h-[80vh] bg-white rounded-lg shadow-lg overflow-hidden">
+    <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+      <h2 class="text-xl font-semibold">Messaging App</h2>
+      <button id="logout-btn" class="hover:underline">Logout</button>
+    </header>
+    <main class="flex flex-1 overflow-hidden">
+      <aside class="w-64 bg-gray-50 border-r border-gray-200 p-4 overflow-y-auto">
+        <h3 class="font-semibold mb-2">Users Online</h3>
+        <ul id="users-list" class="space-y-1 text-gray-700"></ul>
+      </aside>
+      <section class="flex-1 flex flex-col">
+        <div id="messages" class="flex-1 p-4 overflow-y-auto space-y-2"></div>
+        <form id="message-form" class="flex border-t border-gray-200 p-4">
+          <input
+            id="message-input"
+            autocomplete="off"
+            placeholder="Type a message"
+            class="flex-1 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button type="submit" class="ml-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+            Send
+          </button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
